@@ -2243,21 +2243,8 @@ public abstract class MainFrame extends JFrame implements ActionListener {
         }
         String pdf_written_to = "";
         boolean error = false;
-        try {
-            if ( opts.isPrintUsingActualSize() ) {
-                pdf_written_to = PdfExporter.writePhylogenyToPdf( file_name, tp, tp.getWidth(), tp.getHeight() );
-            }
-            else {
-                pdf_written_to = PdfExporter.writePhylogenyToPdf( file_name,
-                                                                  tp,
-                                                                  opts.getPrintSizeX(),
-                                                                  opts.getPrintSizeY() );
-            }
-        }
-        catch ( final IOException e ) {
-            error = true;
-            JOptionPane.showMessageDialog( comp, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE );
-        }
+        error = true;
+        JOptionPane.showMessageDialog( comp, "PDF support has been disabled due to licensing restrictions", "Error", JOptionPane.ERROR_MESSAGE );
         if ( !error ) {
             if ( !ForesterUtil.isEmpty( pdf_written_to ) ) {
                 JOptionPane.showMessageDialog( comp,
